@@ -1,0 +1,27 @@
+version: 0.2
+env:
+  variables:
+  parameter-store:
+      
+phases:
+  install:
+  
+    runtime-versions:
+      python: 3.9
+      
+    commands:
+      - pip install pytest pytest-xdist
+      - pip install -r requirements.txt || true
+      - mkdir -p $HOME/.ssh/
+      - chmod 600 $HOME/.ssh/
+      - chmod 400 $HOME/.ssh/id_rsa
+      - sed -i -E -e 's%url = https://(.*)/(.*)/(.*)%url = git@\1:\2/\3.git%g' .git/config
+      - apt update && apt install -y ldap-utils
+  
+  build:
+    commands:
+      - pytest -n 4
+  
+  post_build:
+    commands:
+       - \[ $CODEBUILD_BUILD_SUCCEEDING -ne 0 \] && echo "Build succeeded" || ( echo "Build failed, dumping environment:" ; printenv )
