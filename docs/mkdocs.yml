@@ -1,0 +1,105 @@
+site_name: Example Mkdocs
+repo_url: https://google.com
+repo_name: View on Google
+edit_uri: edit/master/docs/
+site_description: >-
+  Example
+site_author: Example
+site_dir: build   # where bundled output gets written to
+remote_branch: gh-pages
+
+theme:
+  name: material
+  highlightjs: true
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+  custom_dir: overrides # https://squidfunk.github.io/mkdocs-material/customization/#extending-the-theme
+
+  features:
+    - content.code.annotate
+    - content.tooltips
+    - navigation.prune
+    - navigation.tracking
+    - search.share
+    - search.suggest
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme)" # Palette toggle for automatic mode
+      toggle:
+        icon: material/brightness-auto
+        name: System Preference
+    - media: "(prefers-color-scheme: light)" # Palette toggle for light mode
+      scheme: example-light
+      toggle:
+        icon: material/weather-sunny
+        name: Light
+    - media: "(prefers-color-scheme: dark)" # Palette toggle for dark mode
+      scheme: example-dark
+      toggle:
+        icon: material/weather-night
+        name: Dark
+extra_css: 
+  - assets/example.css
+
+
+docs_dir: .
+watch:
+  - .
+  - ../src
+nav:
+  - About:        index.md
+  - Installation: install.md
+  - Guides:
+    - Quickstart: tutorials/quickstart.md
+  - Examples: examples.md
+  - References:
+    - Module: references/module.md
+    - Tests: references/tests.md
+  - Contributing: 
+      - Code:          contributing/code.md
+      - Documentation: contributing/docs.md
+  
+plugins:
+  - mkdocstrings:
+      custom_templates: ./templates
+      handlers:
+        python:
+          paths:
+            - '..'
+            - '../src'
+          selection:
+            new_path_syntax: true
+          options:
+            heading_level: 2
+            docstring_section_style: table
+            line_length: 30
+  - search:
+      indexing: 'full'
+      min_search_length: 3
+  - same-dir  # allow docs_dir to be '.'
+
+
+markdown_extensions:
+  - smarty
+  - toc:
+      separator: '-'
+      permalink: "#"
+      toc_depth: 99
+  - sane_lists # Cause unordered list following an ordered list to render as 2 different lists instead of 1 unordered
+  - fenced_code
+  - codehilite
+  - admonition
+  - attr_list
+  - md_in_html
+  - footnotes
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      check_paths: true
+      base_path: ['.']
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true  # required for the material theme 
+  - pymdownx.superfences

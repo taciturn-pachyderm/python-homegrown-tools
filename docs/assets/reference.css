@@ -1,0 +1,39 @@
+/* Undo heading styles to remove recursive nesting style */
+.md-content > article h2,
+.md-content > article h3,
+.md-content > article h4,
+.md-content > article h5,
+.md-content > article h6  {
+  font-size: 18pt;
+  color: initial;
+  font-weight: 400;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* If an h1 heading is used, reduce empty space */
+.md-content > article:first-child h1 {
+  /* margin: 0; */
+}
+
+/*  **s**tring **e**scaped
+https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_highlight.scss
+*/
+/* hide literal "\n" in multi-line string templates codeblock */
+[id$=".template"] + div.highlight > pre > code span.se {
+  opacity: 0;
+}
+
+/* append actual line breaks after literal "\n" in multi-line string templates codeblock */
+[id$=".template"] + div.highlight > pre > code span.se:after {
+  content: "\A";
+  white-space: pre;
+}
+
+.doc-object-name {
+  color: var(--md-default-fg-color)
+}
+
+.doc-module-name {
+  border-bottom: 1px solid var(--example-primary-blue);
+}

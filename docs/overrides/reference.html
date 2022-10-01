@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{# https://squidfunk.github.io/mkdocs-material/customization/#overriding-blocks #}
+
+{# Use extra stylesheets for code reference pages #}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ 'assets/reference.css'|url }}">
+{% endblock %}

@@ -1,0 +1,245 @@
+:root {
+  /* https://brand.example.gov/content/index/guid/color_palette */
+  --example-primary-blue: #9079C2;
+  --example-secondary-blue: #90A4E4;
+  --example-secondary-yellow1: #F7A11A;
+  --example-secondary-yellow2: #FFC423;
+  --example-secondary-green1: #5D9732;
+  --example-secondary-green2: #8CC63F;
+  --example-secondary-gray1: #5E6A71;
+  --example-secondary-gray2: #D1D5D8;
+  --example-tertiary-red1: #933C06;
+  --example-tertiary-red2: #D9531E;
+}
+
+[data-md-color-scheme],
+[data-md-color-scheme="example-light"] {
+  --md-primary-fg-color: var(--example-primary-blue);
+  --md-primary-fg-color--light: var(--example-primary-blue);
+  --md-primary-fg-color--dark:  var(--example-secondary-blue);
+  --md-accent-fg-color: var(--example-secondary-blue);;
+  --md-code-hl-color: hsla(197, 100%, 45%, 0.075);
+  --md-code-hl-special-color: var(--example-secondary-yellow2);
+  --md-code-hl-function-color: var(--example-secondary-yellow1);
+  --md-code-hl-constant-color: var(--example-secondary-green2);
+  --md-code-hl-keyword-color: var(--example-secondary-blue);
+  --md-code-hl-string-color: var(--example-secondary-green1);
+  --md-code-hl-number-color: var(--example-tertiary-red2);
+  --md-code-hl-operator-color: var(--example-tertiary-red2);
+  --md-code-hl-name-color: var(--md-code-fg-color);
+  --md-code-hl-punctuation-color: var(--example-tertiary-yellow1);
+  --md-code-hl-comment-color: var(--md-default-fg-color--light);
+  --md-code-hl-generic-color: var(--md-default-fg-color--light);
+  --md-code-hl-variable-color: var(--example-primary-blue);
+  --md-nav-active-color: var(--example-primary-blue);
+}
+
+[data-md-color-scheme="example-dark"] {
+  --md-code-hl-string-color: var(--example-secondary-green2);
+  --md-code-hl-special-color: var(--example-secondary-yellow2);
+  --md-code-hl-function-color: var(--example-secondary-yellow1);
+  --md-hue: 232;
+  --md-default-fg-color: hsla(var(--md-hue),75%,95%,1);
+  --md-default-fg-color--light: hsla(var(--md-hue),75%,90%,0.62);
+  --md-default-fg-color--lighter: hsla(var(--md-hue),75%,90%,0.32);
+  --md-default-fg-color--lightest: hsla(var(--md-hue),75%,90%,0.12);
+  --md-default-bg-color: hsla(var(--md-hue),15%,21%,1);
+  --md-default-bg-color--light: hsla(var(--md-hue),15%,21%,0.54);
+  --md-default-bg-color--lighter: hsla(var(--md-hue),15%,21%,0.26);
+  --md-default-bg-color--lightest: hsla(var(--md-hue),15%,21%,0.07);
+  --md-code-fg-color: hsla(var(--md-hue),18%,86%,1);
+  --md-code-bg-color: hsla(var(--md-hue),15%,15%,1);
+  --md-code-hl-color: rgba(66,135,255,.15);
+  --md-typeset-color: var(--md-default-fg-color);
+  --md-typeset-a-color: var(--md-primary-fg-color);
+  --md-typeset-mark-color: rgba(66,135,255,.3);
+  --md-typeset-kbd-color: hsla(var(--md-hue),15%,94%,0.12);
+  --md-typeset-kbd-accent-color: hsla(var(--md-hue),15%,94%,0.2);
+  --md-typeset-kbd-border-color: hsla(var(--md-hue),15%,14%,1);
+  --md-typeset-table-color: hsla(var(--md-hue),75%,95%,0.12);
+  --md-admonition-fg-color: var(--md-default-fg-color);
+  --md-admonition-bg-color: var(--md-default-bg-color);
+  --md-footer-bg-color: hsla(var(--md-hue),15%,12%,0.87);
+  --md-footer-bg-color--dark: hsla(var(--md-hue),15%,10%,1);
+  --md-shadow-z1: 0 0.2rem 0.5rem rgba(0,0,0,.2),0 0 0.05rem rgba(0,0,0,.1);
+  --md-shadow-z2: 0 0.2rem 0.5rem rgba(0,0,0,.3),0 0 0.05rem rgba(0,0,0,.25);
+  --md-shadow-z3: 0 0.2rem 0.5rem rgba(0,0,0,.4),0 0 0.05rem rgba(0,0,0,.35);
+  --md-nav-active-color: var(--example-secondary-blue);
+}
+
+/* Styling for example logo */
+.md-logo img {
+  background: #f8f8f8;
+  height: 1.5rem !important;
+}
+
+.md-header__title {
+  margin-left: unset !important;
+}
+
+
+/* Slightly larger footnote superscript */
+.footnote-ref {
+  font-size: 1rem !important;
+}
+
+
+/* don't shrink font-size of codeblocks inside admonitions */
+.md-typeset :is(.admonition,details) div.highlight {
+  font-size: unset !important;
+}
+
+
+/* Add a '$' prefix to codeblocks with 'prompt' syntax class to indicate interactive user input. */
+code.prompt::before,
+div.prompt.highlight > pre > code::before {
+  content: "$ ";
+  font-weight: 1000;
+  color: var(--md-nav-active-color);
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+
+/* outlines for tabbed content boxes */
+.tabbed-labels > label {
+  --tab-border: 1px solid var(--md-default-fg-color--lightest);
+  border-left: var(--tab-border);
+}
+.tabbed-labels > label:first-of-type {
+  border-left: none;
+}
+.tabbed-labels > label:nth-last-of-type(-n+1) {
+  border-right: var(--tab-border);
+}
+.tabbed-set.tabbed-alternate {
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+.tabbed-content {
+  padding: 0.5rem;
+}
+
+
+/* Ignore heading nest size alteration generated automatically by recursive code referencing */
+.doc-module-name {
+  display: inline-block;
+  margin: 1rem 0 0 !important;
+  font-size: 1.3rem       !important;
+  line-height: 1.4       !important;
+  font-weight: 300       !important;
+  letter-spacing: -.01rem !important;
+}
+
+.doc-class-name {
+  font-weight: 400       !important;
+  font-size: 1.1rem       !important;
+  letter-spacing: -.01rem !important;
+  line-height: 1.5 !important;
+}
+
+.doc-attribute-name,
+.doc-function-name {
+  font-weight: 700       !important;
+  letter-spacing: -.01rem !important;
+  font-size: 0.85rem       !important;
+  line-height: 1.6       !important;
+  color: var(--md-typeset-color) !important;
+  margin: 1rem 0 0 !important;
+}
+
+.doc-class {
+  margin: 1rem 0 3rem !important;
+}
+
+.doc-class-bases {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.7rem !important;
+}
+
+.doc-function-name::after {
+  content: "()";
+}
+
+.doc-object-name {
+  overflow-wrap: break-word;
+}
+
+.doc-label {
+  font-size: 0.85rem !important;
+}
+
+.doc-object > div.highlight > pre {
+    margin-top: 0;
+}
+
+.doc-contents > details.quote {
+  margin-top: 0;
+}
+
+
+
+
+
+/***   Nav Bar   ***/
+
+/* Hide duplicate site title at the top of the left navbar */
+[for="__drawer"].md-nav__title {
+    display: none !important;
+}
+
+/* Make nested nav arrows be adjacent to the page titles */
+.md-nav__link {
+  justify-content: flex-start !important;
+}
+.md-nav__item .md-nav__link--index [href] {
+    width: unset;
+}
+
+/* Make hamburger nav a bit more modern */
+.md-nav__link + nav.md-nav > .md-nav__title {
+  height: 0;
+  transition-duration: 0.15s;
+  padding: 2.35rem 0 0;
+}
+.md-nav__link + nav.md-nav > .md-nav__title:hover {
+  background-color: var(--example-primary-blue);
+}
+
+.md-nav__item {
+  font-weight: 300;
+}
+
+/* Highlight and magnify current ToC section */
+.md-nav__link {
+  transition: 0.2s ;
+  animation-timing-function: linear;
+  overflow: visible;
+}
+
+/* Allow Table of Contents nav to scroll on overflow of object names */
+.md-nav__link {
+  background-clip: content-box !important;
+  min-width: min-content !important;
+}
+
+/* Emphasize current highlighted section in the table of contents */
+label[for="__toc"] + ul.md-nav__list .md-nav__link.md-nav__link--passed.md-nav__link--active {
+  padding: 0.15rem 0;
+  font-weight: 1000;
+  /*background: var(--md-code-hl-color);*/
+}
+
+/* Enable theme-able highlight color for the active section in Table of Contents */
+.md-nav__item .md-nav__link--active {
+  color: var(--md-nav-active-color);
+}
+
+nav.md-nad.md-nav--secondary {
+  line-height: 1;
+}
+
+.headerlink {
+  font-size: 1rem;
+}
